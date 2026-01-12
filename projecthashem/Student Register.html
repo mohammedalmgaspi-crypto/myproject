@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Enrollment</title>
+
+<style>
+/* ===== General ===== */
+body{
+  margin:0;
+  font-family:Verdana;
+  background:#fff7ed;
+}
+
+/* ===== Header ===== */
+.page-header{
+  background:#9a3412;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+/* ===== Form Area ===== */
+.enroll-area{
+  max-width:420px;
+  margin:40px auto;
+  background:white;
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+}
+
+.enroll-area h2{
+  text-align:center;
+  color:#9a3412;
+}
+
+.enroll-area input,
+.enroll-area select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+}
+
+/* ===== Button ===== */
+.enroll-area button{
+  width:100%;
+  padding:10px;
+  background:#9a3412;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+.enroll-area button:hover{
+  background:#7c2d12;
+}
+
+/* ===== Message ===== */
+.message{
+  margin-top:15px;
+  text-align:center;
+  color:green;
+}
+
+/* ===== Footer ===== */
+.page-footer{
+  background:#9a3412;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-header">
+  <h1>Student Registration Page</h1>
+</div>
+
+<div class="enroll-area">
+  <h2>Enroll Student</h2>
+
+  <input id="stdId" placeholder="Student ID">
+  <input id="stdName" placeholder="Student Name">
+  <input id="stdEmail" type="email" placeholder="Email">
+
+  <select id="stdGender">
+    <option value="">Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+  </select>
+
+  <button onclick="saveStudent()">Save Student</button>
+
+  <div class="message" id="msg"></div>
+</div>
+
+<div class="page-footer">
+  © <span id="yearNow"></span> IT College
+</div>
+
+<script>
+document.getElementById("yearNow").textContent =
+  new Date().getFullYear();
+
+function saveStudent(){
+  let id = stdId.value.trim();
+  let name = stdName.value.trim();
+
+  if(id === "" || name === ""){
+    alert("Please enter required data");
+    return;
+  }
+
+  let data = {
+    id:id,
+    name:name,
+    email:stdEmail.value,
+    gender:stdGender.value
+  };
+
+  localStorage.setItem(id, JSON.stringify(data));
+
+  msg.textContent = "Student saved successfully";
+
+  stdId.value="";
+  stdName.value="";
+  stdEmail.value="";
+  stdGender.value="";
+}
+</script>
+
+</body>
+</html>

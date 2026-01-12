@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+
+<style>
+body{font-family:Arial;background:#f4f6f9;margin:0}
+header,footer{
+  background:#2d6a4f;
+  color:white;
+  padding:15px;
+  text-align:center;
+}
+main{padding:30px}
+input,textarea,button{
+  width:100%;
+  padding:8px;
+  margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header><h2>Contact Us</h2></header>
+
+<main>
+<input id="name" placeholder="Contact Name">
+<input id="email" placeholder="Email">
+<textarea id="msg" placeholder="Message"></textarea>
+<button onclick="send()">Send</button>
+</main>
+
+<footer>© IT College</footer>
+
+<script>
+function send(){
+ if(!/^[a-zA-Z ]+$/.test(name.value)){alert("Invalid Name");return;}
+ if(!email.value.includes("@")){alert("Invalid Email");return;}
+ alert("It has been sent.");
+}
+</script>
+
+</body>
+</html>

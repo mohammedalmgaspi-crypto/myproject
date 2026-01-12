@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Login</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f4f6f9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.login-box{
+  background:white;
+  padding:30px;
+  width:300px;
+  border-radius:8px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+h2{text-align:center}
+
+input,button{
+  width:100%;
+  padding:8px;
+  margin:8px 0;
+}
+
+button{
+  background:#1e3c72;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+  <h2>Student Login</h2>
+
+  <input type="text" id="sid" placeholder="Student ID">
+  <input type="password" id="spass" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+  const id = sid.value.trim();
+  const pass = spass.value;
+
+  if(!id || !pass){
+    alert("Enter ID and Password");
+    return;
+  }
+
+  const data = localStorage.getItem(id);
+
+  if(!data){
+    alert("Student not found");
+    window.location.href="index.html";
+    return;
+  }
+
+  const student = JSON.parse(data);
+
+  if(student.password === pass){
+    localStorage.setItem("loginStudent", JSON.stringify(student));
+    window.location.href="profile.html";
+  }else{
+    alert("Wrong Password");
+    window.location.href="index.html";
+  }
+}
+</script>
+
+</body>
+</html>

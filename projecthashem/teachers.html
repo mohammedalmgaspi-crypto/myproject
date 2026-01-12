@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Teachers</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Tahoma;
+  background:#eef1f5;
+}
+
+.header, .footer{
+  background:#0f766e;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+
+.menu{
+  background:#134e4a;
+  text-align:center;
+  padding:10px;
+}
+.menu a{
+  color:#e0f2f1;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+main{
+  padding:30px;
+}
+
+button{
+  background:#0f766e;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  cursor:pointer;
+}
+
+table{
+  width:100%;
+  background:white;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  border:1px solid #ccc;
+  padding:8px;
+  text-align:center;
+}
+th{
+  background:#ccfbf1;
+}
+
+.form{
+  background:white;
+  padding:15px;
+  margin-top:20px;
+  display:none;
+}
+input{
+  padding:6px;
+  margin:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h2>Department Teachers</h2>
+</div>
+
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="departments.html">Departments</a>
+</div>
+
+<main>
+
+<button onclick="show()">Add Teacher</button>
+
+<table>
+<tr>
+ <th>ID</th>
+ <th>English Name</th>
+ <th>Arabic Name</th>
+ <th>Prefix</th>
+ <th>Degree</th>
+ <th>Action</th>
+</tr>
+<tbody id="tbl"></tbody>
+</table>
+
+<div class="form" id="form">
+ <input id="id" placeholder="ID">
+ <input id="en" placeholder="English Name">
+ <input id="ar" placeholder="Arabic Name">
+ <input id="pre" placeholder="Prefix">
+ <input id="deg" placeholder="Degree">
+ <br><br>
+ <button onclick="save()">Save</button>
+</div>
+
+</main>
+
+<div class="footer">
+ © <span id="year"></span> IT College
+</div>
+
+<script>
+document.getElementById("year").innerText=new Date().getFullYear();
+
+let teachers=[
+ {id:"T1",en:"Ahmed",ar:"أحمد",pre:"Dr",deg:"PhD"}
+];
+
+let edit=-1;
+
+function draw(){
+ tbl.innerHTML="";
+ teachers.forEach((t,i)=>{
+  tbl.innerHTML+=`
+   <tr>
+    <td>${t.id}</td>
+    <td>${t.en}</td>
+    <td>${t.ar}</td>
+    <td>${t.pre}</td>
+    <td>${t.deg}</td>
+    <td><button onclick="editT(${i})">Edit</button></td>
+   </tr>
+  `;
+ });
+}
+
+function show(){
+ form.style.display="block";
+ edit=-1;
+ clear();
+}
+
+function save(){
+ let t={
+  id:id.value,
+  en:en.value,
+  ar:ar.value,
+  pre:pre.value,
+  deg:deg.value
+ };
+ if(edit==-1) teachers.push(t);
+ else teachers[edit]=t;
+ draw();
+ form.style.display="none";
+}
+
+function editT(i){
+ edit=i;
+ let t=teachers[i];
+ id.value=t.id;
+ en.value=t.en;
+ ar.value=t.ar;
+ pre.value=t.pre;
+ deg.value=t.deg;
+ form.style.display="block";
+}
+
+function clear(){
+ id.value=en.value=ar.value=pre.value=deg.value="";
+}
+
+draw();
+</script>
+
+</body>
+</html>

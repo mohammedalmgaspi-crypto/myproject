@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College Dashboard</title>
+
+<style>
+/* ===== General ===== */
+body{
+  margin:0;
+  font-family:Tahoma;
+  background:#eef1f5;
+}
+
+/* ===== Top Bar ===== */
+.top-bar{
+  background:#0f766e;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+
+/* ===== Navigation ===== */
+.menu{
+  background:#134e4a;
+  padding:12px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.menu a{
+  color:#e0f2f1;
+  text-decoration:none;
+  font-size:15px;
+}
+
+/* ===== Welcome Section ===== */
+.welcome{
+  padding:50px 20px;
+  text-align:center;
+  background:#ccfbf1;
+}
+
+.welcome h2{
+  color:#134e4a;
+}
+
+/* ===== Features ===== */
+.features{
+  padding:40px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.feature-box{
+  background:white;
+  width:220px;
+  padding:20px;
+  border-left:6px solid #0f766e;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+/* ===== Footer ===== */
+.page-footer{
+  background:#0f766e;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <h1>IT College Information System</h1>
+  <img src="photo_2025-12-28_13-24-17.jpg" alt="College logo">
+</div>
+
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="activities.html">Activities</a>
+  <a href="departments.html">Departments</a>
+  <a href="register.html">Register</a>
+</div>
+
+<section class="welcome">
+  <h2>Welcome</h2>
+  <p>This dashboard provides information about IT College departments and students.</p>
+</section>
+
+<section class="features">
+  <div class="feature-box">
+    <h3>Departments</h3>
+    <p>Explore all IT departments</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>College News</h3>
+    <p>View latest activities and events</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Student Services</h3>
+    <p>Register and manage students</p>
+  </div>
+</section>
+
+<div class="page-footer">
+  © <span id="currentYear"></span> IT College
+</div>
+
+<script>
+document.getElementById("currentYear").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>

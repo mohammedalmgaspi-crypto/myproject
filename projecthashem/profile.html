@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Profile</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f4f6f9;
+}
+
+header,footer{
+  background:#1e3c72;
+  color:white;
+  padding:15px;
+  text-align:center;
+}
+
+main{
+  padding:30px;
+  display:flex;
+  justify-content:center;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  width:350px;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+  text-align:center;
+}
+
+img{
+  width:120px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
+
+button{
+  padding:8px 15px;
+  background:#c0392b;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Student Profile</h2>
+</header>
+
+<main>
+  <div class="card">
+    <img src="https://via.placeholder.com/120">
+    <p><b>ID:</b> <span id="sid"></span></p>
+    <p><b>Name:</b> <span id="sname"></span></p>
+    <p><b>Department:</b> <span id="sdept"></span></p>
+    <p><b>Email:</b> <span id="semail"></span></p>
+    <br>
+    <button onclick="logout()">Logout</button>
+  </div>
+</main>
+
+<footer>
+  © IT College
+</footer>
+
+<script>
+const student = JSON.parse(localStorage.getItem("loginStudent"));
+
+if(!student){
+  window.location.href="index.html";
+}
+
+sid.textContent = student.id;
+sname.textContent = student.enName;
+sdept.textContent = student.deptName;
+semail.textContent = student.email;
+
+function logout(){
+  localStorage.removeItem("loginStudent");
+  window.location.href="index.html";
+}
+</script>
+
+</body>
+</html>

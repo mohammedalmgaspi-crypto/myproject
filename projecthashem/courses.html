@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Courses</title>
+
+<style>
+body{margin:0;font-family:Tahoma;background:#eef1f5;}
+.header,.footer{background:#0f766e;color:white;text-align:center;padding:15px;}
+.menu{background:#134e4a;text-align:center;padding:10px;}
+.menu a{color:#e0f2f1;margin:0 10px;text-decoration:none;}
+main{padding:30px;}
+table{width:100%;background:white;border-collapse:collapse;}
+th,td{border:1px solid #ccc;padding:8px;text-align:center;}
+th{background:#ccfbf1;}
+button{background:#0f766e;color:white;border:none;padding:6px;}
+</style>
+</head>
+
+<body>
+
+<div class="header"><h2>Courses</h2></div>
+
+<div class="menu">
+ <a href="departments.html">Departments</a>
+</div>
+
+<main>
+
+<table>
+<tr>
+ <th>ID</th>
+ <th>Course Name</th>
+ <th>Credit</th>
+ <th>Status</th>
+</tr>
+<tbody id="list"></tbody>
+</table>
+
+</main>
+
+<div class="footer">© IT College</div>
+
+<script>
+let courses=[
+ {id:"C101",name:"Web Programming",credit:3,status:"Active"},
+ {id:"C102",name:"Database",credit:4,status:"Active"}
+];
+
+courses.forEach(c=>{
+ list.innerHTML+=`
+ <tr>
+  <td>${c.id}</td>
+  <td>${c.name}</td>
+  <td>${c.credit}</td>
+  <td>${c.status}</td>
+ </tr>
+ `;
+});
+</script>
+
+</body>
+</html>

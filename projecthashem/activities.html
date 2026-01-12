@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College Activities</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Tahoma;
+  background:#eef1f5;
+}
+
+/* Header */
+.header{
+  background:#0f766e;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+/* Menu */
+.menu{
+  background:#134e4a;
+  padding:12px;
+  text-align:center;
+}
+.menu a{
+  color:#e0f2f1;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+/* Activities */
+.activities{
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:20px;
+}
+
+.activity-card{
+  background:white;
+  padding:15px;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  position:relative;
+}
+
+.activity-card h3{
+  color:#134e4a;
+}
+
+.activity-card small{
+  color:#555;
+}
+
+/* Menu dots */
+.dots{
+  position:absolute;
+  top:10px;
+  right:10px;
+  cursor:pointer;
+}
+
+.options{
+  display:none;
+  position:absolute;
+  right:10px;
+  top:30px;
+  background:white;
+  border:1px solid #ccc;
+}
+
+.options div{
+  padding:6px 10px;
+  cursor:pointer;
+}
+.options div:hover{
+  background:#eee;
+}
+
+/* Footer */
+.footer{
+  background:#0f766e;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>College Activities</h1>
+</div>
+
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="activities.html">Activities</a>
+  <a href="departments.html">Departments</a>
+</div>
+
+<div class="activities" id="box"></div>
+
+<div class="footer">
+  © <span id="year"></span> IT College
+</div>
+
+<script>
+document.getElementById("year").innerText=new Date().getFullYear();
+
+let activities=[
+ {title:"Programming Workshop",date:"2025-01-02"},
+ {title:"AI Seminar",date:"2025-01-10"}
+];
+
+let box=document.getElementById("box");
+
+function draw(){
+ box.innerHTML="";
+ activities.forEach((a,i)=>{
+  box.innerHTML+=`
+   <div class="activity-card">
+     <div class="dots" onclick="toggle(${i})">⋮</div>
+     <div class="options" id="opt${i}">
+       <div onclick="details('${a.title}')">Details</div>
+       <div onclick="removeAct(${i})">Delete</div>
+     </div>
+     <h3>${a.title}</h3>
+     <small>Date: ${a.date}</small>
+   </div>
+  `;
+ });
+}
+
+function toggle(i){
+ document.querySelectorAll(".options").forEach(o=>o.style.display="none");
+ document.getElementById("opt"+i).style.display="block";
+}
+
+function details(t){
+ alert("Activity: "+t);
+}
+
+function removeAct(i){
+ activities.splice(i,1);
+ draw();
+}
+
+draw();
+</script>
+
+</body>
+</html>
